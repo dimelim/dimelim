@@ -1,19 +1,30 @@
-<p align="center">
-  <img src="banner.svg" alt="Lim — Full-stack developer / Next.js" width="100%" />
-</p>
+# Lim
 
-<br/>
+```ts
+const developer = {
+  name: "Lim",
+  role: "Full-stack / Next.js",
+  stack: [
+    "TypeScript", "React", "Tailwind",
+    "Node.js", "Supabase",
+  ],
+  vision: "Looking into the future",
+  discord: "dimelim",
+}
+```
 
-<p align="center">
-  <img src="projects.svg" alt="projects" width="100%" />
-</p>
+### Projects
 
-<p align="center">
-  <a href="https://peekstore.com"><code>peekstore.com</code></a>&nbsp;&nbsp;&nbsp;<a href="https://shielus.lat"><code>shielus.lat</code></a>&nbsp;&nbsp;&nbsp;<code>mineout (soon)</code>
-</p>
+```ts
+const projects = [
+  "peekstore.com",  // where I work
+  "shielus.lat",    // personal
+  "mineout",        // coming soon
+]
+```
 
-<br/>
+[peekstore.com](https://peekstore.com) / [shielus.lat](https://shielus.lat) / mineout (soon)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Discord-dimelim-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord dimelim" />
-</p>
+### Contact
+
+Discord: **dimelim**
