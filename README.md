@@ -17,13 +17,13 @@ const developer = {
 
 ```ts
 const projects = [
-  "peekstore.com",  // where I work
+  "..com",  // where I work
   "shielus.lat",    // personal
   "mineout",        // coming soon
 ]
 ```
 
-[peekstore.com](https://peekstore.com) / [shielus.lat](https://shielus.lat) / mineout (soon)
+[..com](.) / [shielus.lat](https://shielus.lat) / mineout (soon)
 
 ### Contact
 
