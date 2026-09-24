@@ -1,10 +1,10 @@
 import { BEAT, W, H } from '../time.js';
-import { seg, lerp, decay } from '../math.js';
-import { spring, outExpo, inOutCubic, inBack } from '../ease.js';
+import { seg, lerp, decay } from '../../../math.js';
+import { spring, outExpo, inOutCubic, inBack } from '../../../ease.js';
 import { paper } from '../palette.js';
-import { serif } from '../fonts.js';
-import { stage, layer, reset, clear } from '../stage.js';
-import { shader, texture } from '../gl.js';
+import { serif } from '../../../fonts.js';
+import { stage, layer, reset, clear } from '../../../stage.js';
+import { shader, texture } from '../../../gl.js';
 import depth from './depth.js';
 
 const BLOBS = [

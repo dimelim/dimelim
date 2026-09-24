@@ -7,12 +7,13 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import ffmpeg from 'ffmpeg-static';
-import { FPS, FRAMES } from './src/time.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
-const PREVIEW = process.argv.includes('--preview');
-const OPTIONS = PREVIEW ? { scale: 0.5, samples: 1 } : { scale: 1, samples: 8 };
-const OUT = path.join(ROOT, PREVIEW ? 'build/preview.mp4' : 'showreel.mp4');
+const ARGS = process.argv.slice(2);
+const PREVIEW = ARGS.includes('--preview');
+const REEL = ARGS.find(arg => !arg.startsWith('--')) ?? 'claude';
+const OPTIONS = { reel: REEL, ...(PREVIEW ? { scale: 0.5, samples: 1 } : { scale: 1, samples: 8 }) };
+const OUT = path.join(ROOT, PREVIEW ? `build/${REEL}-preview.mp4` : `${REEL}.mp4`);
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.woff2': 'font/woff2' };
 
 function serve() {
@@ -39,8 +40,8 @@ async function open(browser, url) {
   return page;
 }
 
-function encoder(audio) {
-  const args = ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-i', '-', '-i', audio];
+function encoder(audio, fps) {
+  const args = ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-', '-i', audio];
   const video = ['-c:v', 'libx264', '-preset', 'slow', '-crf', '17', '-pix_fmt', 'yuv420p'];
   const sound = ['-c:a', 'aac', '-b:a', '256k', '-movflags', '+faststart', '-shortest', OUT];
   return spawn(ffmpeg, [...args, ...video, ...sound], { stdio: ['pipe', 'inherit', 'inherit'] });
@@ -66,12 +67,14 @@ const browser = await chromium.launch({
 });
 await mkdir(path.join(ROOT, 'build'), { recursive: true });
 
-const audio = path.join(ROOT, 'build/soundtrack.wav');
+const audio = path.join(ROOT, `build/${REEL}.wav`);
 const composer = await open(browser, url);
+await composer.evaluate(options => window.reel.init(options), { reel: REEL, scale: 0.1 });
+const { fps, frames } = await composer.evaluate(() => window.reel.info());
 await writeFile(audio, Buffer.from(await composer.evaluate(() => window.reel.audio()), 'base64'));
 await composer.close();
 
-const ffmpegProcess = encoder(audio);
+const ffmpegProcess = encoder(audio, fps);
 const deliver = sequencer(ffmpegProcess.stdin);
 const workers = os.cpus().length;
 const started = Date.now();
@@ -81,10 +84,10 @@ await Promise.all(
   Array.from({ length: workers }, async (_, worker) => {
     const page = await open(browser, url);
     await page.evaluate(options => window.reel.init(options), OPTIONS);
-    for (let frame = worker; frame < FRAMES; frame += workers) {
+    for (let frame = worker; frame < frames; frame += workers) {
       const data = await page.evaluate(i => window.reel.frame(i), frame);
       await deliver(frame, Buffer.from(data.slice(data.indexOf(',') + 1), 'base64'));
-      if (++done % 60 === 0) console.log(`${done}/${FRAMES} frames · ${Math.round((Date.now() - started) / 1000)}s`);
+      if (++done % 60 === 0) console.log(`${done}/${frames} frames · ${Math.round((Date.now() - started) / 1000)}s`);
     }
     await page.close();
   }),

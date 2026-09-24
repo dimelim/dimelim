@@ -1,8 +1,8 @@
 import { BEAT, W, H } from '../time.js';
-import { seg, lerp, clamp } from '../math.js';
-import { outExpo, outBack, inOutQuint, inExpo, spring, inOutCubic } from '../ease.js';
+import { seg, lerp, clamp } from '../../../math.js';
+import { outExpo, outBack, inOutQuint, inExpo, spring, inOutCubic } from '../../../ease.js';
 import { ink, paper, coral, alpha } from '../palette.js';
-import { display, mono, serif } from '../fonts.js';
+import { display, mono, serif } from '../../../fonts.js';
 
 const WORDS = ['TIMING', 'SPACING', 'EASING', 'RHYTHM', 'WEIGHT', 'DETAIL', 'MOTION'];
 const LAND = [24, 24.5, 25, 25.5, 26, 26.5, 27];

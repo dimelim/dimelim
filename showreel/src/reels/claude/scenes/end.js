@@ -1,9 +1,9 @@
 import { BEAT, W, H } from '../time.js';
-import { seg, TAU, rng } from '../math.js';
-import { outBack, outExpo, outQuint, outCubic } from '../ease.js';
+import { seg, TAU, rng } from '../../../math.js';
+import { outBack, outExpo, outQuint, outCubic } from '../../../ease.js';
 import { ink, paper, coral, lime, alpha } from '../palette.js';
-import { display, mono, serif } from '../fonts.js';
-import { typed } from '../text.js';
+import { display, mono, serif } from '../../../fonts.js';
+import { typed } from '../../../text.js';
 
 const MARK = [W / 2, 380];
 const RAYS = [150, 104, 132, 96, 150, 110, 138, 100, 150, 106, 128, 98];

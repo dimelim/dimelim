@@ -1,4 +1,4 @@
-import { lerpRgb, css } from './palette.js';
+import { lerpRgb, css } from './color.js';
 
 export function camera({ yaw, pitch, dist, target = [0, 0, 0], focal = 1400, cx = 960, cy = 540 }) {
   const cw = Math.cos(yaw),

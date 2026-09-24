@@ -1,8 +1,8 @@
 import { BEAT, W, H } from '../time.js';
-import { seg, lerp, rng, TAU, decay, clamp } from '../math.js';
-import { outExpo, inExpo, inOutCubic } from '../ease.js';
+import { seg, lerp, rng, TAU, decay, clamp } from '../../../math.js';
+import { outExpo, inExpo, inOutCubic } from '../../../ease.js';
 import { ink, paper, coral, pink, violet, alpha, rgb } from '../palette.js';
-import { camera } from '../space.js';
+import { camera } from '../../../space.js';
 
 const COUNT = 9000;
 const NODES = 150;

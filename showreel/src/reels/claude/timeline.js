@@ -1,5 +1,5 @@
 import { BEAT, W, H, IMPACTS } from './time.js';
-import { decay, hash, lerp } from './math.js';
+import { decay, hash, lerp } from '../../math.js';
 import intro from './scenes/intro.js';
 import title from './scenes/title.js';
 import form from './scenes/form.js';

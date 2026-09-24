@@ -1,6 +1,5 @@
-import { W, H, BEAT, IMPACTS } from './time.js';
-import { decay, rng } from './math.js';
-import { layer, reset } from './stage.js';
+import { rng } from './math.js';
+import { W, H, layer, reset } from './stage.js';
 
 let grains, red, cyan;
 
@@ -62,9 +61,8 @@ function grain(ctx, frame) {
   ctx.restore();
 }
 
-export function finish(ctx, t, frame) {
+export function finish(ctx, frame, hit) {
   reset(ctx);
-  const hit = decay(t / BEAT, IMPACTS, 5);
   if (hit > 0.02) aberration(ctx, hit);
   vignette(ctx);
   grain(ctx, frame);

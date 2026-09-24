@@ -1,6 +1,6 @@
-import { BEAT, DURATION, ROLL } from '../time.js';
-import { rng } from '../math.js';
-import { bezier } from '../ease.js';
+import { BEAT, DURATION, ROLL } from './time.js';
+import { rng } from '../../math.js';
+import { bezier } from '../../ease.js';
 import {
   kick,
   snare,
@@ -20,7 +20,7 @@ import {
   impact,
   glide,
   bubble,
-} from './instruments.js';
+} from '../../audio/instruments.js';
 
 const at = n => n * BEAT;
 const ease = bezier(0.7, 0, 0.2, 1);

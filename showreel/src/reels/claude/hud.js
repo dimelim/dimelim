@@ -1,9 +1,9 @@
 import { BEAT, W, H, FPS } from './time.js';
-import { seg, lerp, clamp } from './math.js';
-import { outExpo } from './ease.js';
+import { seg, lerp, clamp } from '../../math.js';
+import { outExpo } from '../../ease.js';
 import { ink, paper, coral, alpha } from './palette.js';
-import { mono } from './fonts.js';
-import { scramble } from './text.js';
+import { mono } from '../../fonts.js';
+import { scramble } from '../../text.js';
 
 const CHAPTERS = [
   {

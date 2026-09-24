@@ -1,5 +1,4 @@
-export const W = 1920;
-export const H = 1080;
+export { W, H } from '../../stage.js';
 export const FPS = 60;
 export const BPM = 128;
 export const BEAT = 60 / BPM;

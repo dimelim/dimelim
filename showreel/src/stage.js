@@ -1,4 +1,5 @@
-import { W, H } from './time.js';
+export const W = 1920;
+export const H = 1080;
 
 export const stage = { scale: 1 };
 

@@ -1,9 +1,9 @@
 import { BEAT, W, H } from '../time.js';
-import { seg, lerp, clamp, TAU, hash } from '../math.js';
-import { bezier, outExpo, outBack, inOutCubic, outCubic, inBack, inCubic } from '../ease.js';
+import { seg, lerp, clamp, TAU, hash } from '../../../math.js';
+import { bezier, outExpo, outBack, inOutCubic, outCubic, inBack, inCubic } from '../../../ease.js';
 import { ink, paper, coral, alpha } from '../palette.js';
-import { mono } from '../fonts.js';
-import { typed } from '../text.js';
+import { mono } from '../../../fonts.js';
+import { typed } from '../../../text.js';
 
 const ease = bezier(0.7, 0, 0.2, 1);
 const box = { x: 500, y: 185, s: 670 };

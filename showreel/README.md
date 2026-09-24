@@ -1,10 +1,14 @@
-# Claude — Motion Showreel
+# Motion reels
 
-15 s · 1920×1080 · 60 fps · 128 BPM. Every frame and every sound is generated in code: Canvas 2D, a GLSL shader and Web Audio, rendered headless with Playwright and encoded with ffmpeg.
+Videos generated entirely in code: Canvas 2D, GLSL and Web Audio, rendered headless with Playwright and encoded with ffmpeg. The engine in `src/` is shared; each reel lives in `src/reels/<name>/` with its own timeline, scenes and score.
+
+| Reel | Length | Output |
+| --- | --- | --- |
+| `claude` | 15 s · 1080p60 | `claude.mp4` |
 
 ```sh
 npm install
 npx playwright install chromium
-npm run preview   # build/preview.mp4, half resolution, no motion blur
-npm run build     # showreel.mp4, full quality, 8-sample motion blur
+npm run preview -- claude   # build/claude-preview.mp4, half resolution, no motion blur
+npm run build -- claude     # claude.mp4, full quality, 8-sample motion blur
 ```

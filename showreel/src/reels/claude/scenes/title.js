@@ -1,10 +1,10 @@
 import { BEAT, W, H, ROLL } from '../time.js';
-import { seg, lerp, TAU, decay } from '../math.js';
-import { spring, outExpo, outBack, outCubic, outQuint, inQuint, inExpo, inOutCubic } from '../ease.js';
+import { seg, lerp, TAU, decay } from '../../../math.js';
+import { spring, outExpo, outBack, outCubic, outQuint, inQuint, inExpo, inOutCubic } from '../../../ease.js';
 import { ink, paper, coral, alpha } from '../palette.js';
-import { display, mono, serif } from '../fonts.js';
-import { scramble, run, inkBox } from '../text.js';
-import { layer, reset, clear } from '../stage.js';
+import { display, mono, serif } from '../../../fonts.js';
+import { scramble, run, inkBox } from '../../../text.js';
+import { layer, reset, clear } from '../../../stage.js';
 import form from './form.js';
 
 const WORD = 'CLAUDE';

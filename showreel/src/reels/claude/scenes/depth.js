@@ -1,8 +1,8 @@
 import { BEAT, W, H } from '../time.js';
-import { seg, lerp, clamp, hash } from '../math.js';
-import { spring, outQuart, inOutExpo, inOutCubic, outCubic } from '../ease.js';
+import { seg, lerp, clamp, hash } from '../../../math.js';
+import { spring, outQuart, inOutExpo, inOutCubic, outCubic } from '../../../ease.js';
 import { blue, navy, sky, paper, coral, rgb, lerpRgb, alpha } from '../palette.js';
-import { camera, boxes } from '../space.js';
+import { camera, boxes } from '../../../space.js';
 
 export const HALF = 212;
 const FOCAL = 1400;

@@ -1,6 +1,6 @@
 import { BEAT, W, H } from '../time.js';
-import { seg, lerp, clamp, TAU } from '../math.js';
-import { spring, outBack, outExpo, inOutCubic, inBack } from '../ease.js';
+import { seg, lerp, clamp, TAU } from '../../../math.js';
+import { spring, outBack, outExpo, inOutCubic, inBack } from '../../../ease.js';
 import { ink, paper, coral, blue, mix, alpha } from '../palette.js';
 import depth, { HALF } from './depth.js';
 
