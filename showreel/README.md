@@ -5,6 +5,7 @@ Videos generated entirely in code: Canvas 2D, GLSL and Web Audio, rendered headl
 | Reel | Length | Output |
 | --- | --- | --- |
 | `claude` | 15 s · 1080p60 | `claude.mp4` |
+| `lim` | 60 s · 1080p60 | `lim.mp4` |
 
 ```sh
 npm install

@@ -49,21 +49,21 @@ function vignette(ctx) {
   ctx.fillRect(0, 0, W, H);
 }
 
-function grain(ctx, frame) {
+function grain(ctx, frame, amount) {
   grains ??= Array.from({ length: 6 }, (_, i) => makeGrain(i + 1));
   const r = rng(frame * 7919 + 13);
   ctx.save();
   ctx.globalCompositeOperation = 'overlay';
-  ctx.globalAlpha = 0.07;
+  ctx.globalAlpha = amount;
   ctx.fillStyle = ctx.createPattern(grains[frame % grains.length], 'repeat');
   ctx.translate(-r() * 512, -r() * 512);
   ctx.fillRect(0, 0, W + 512, H + 512);
   ctx.restore();
 }
 
-export function finish(ctx, frame, hit) {
+export function finish(ctx, frame, hit, amount) {
   reset(ctx);
   if (hit > 0.02) aberration(ctx, hit);
   vignette(ctx);
-  grain(ctx, frame);
+  grain(ctx, frame, amount);
 }

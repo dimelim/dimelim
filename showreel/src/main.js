@@ -59,7 +59,7 @@ function frame(i) {
   const t = i / reel.fps;
   if (samples > 1) accumulate(t);
   else renderAt(t);
-  finish(ctx, i, reel.hit(t));
+  finish(ctx, i, reel.hit(t), reel.grain ?? 0.07);
   return canvas.toDataURL('image/png');
 }
 

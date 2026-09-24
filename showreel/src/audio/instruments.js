@@ -251,3 +251,46 @@ export function bubble(s, t, f0, v, pan) {
   o.frequency.exponentialRampToValueAtTime(f0 * 2.6, t + 0.07);
   out(s, o.connect(env(s, t, v, 0.09)), s.sfx, 0.35, pan);
 }
+
+export function key(s, t, v) {
+  out(
+    s,
+    noise(s, t, t + 0.05)
+      .connect(filter(s, 'bandpass', 3200, 1.2))
+      .connect(env(s, t, v, 0.025, 0.0005)),
+    s.sfx,
+    0.05,
+  );
+  out(s, osc(s, 'sine', 190, t, t + 0.06).connect(env(s, t, v * 0.6, 0.035)), s.sfx);
+}
+
+export function chip(s, t, from, to, dur, v, pan = 0) {
+  const o = osc(s, 'square', from, t, t + dur + 0.05);
+  o.frequency.exponentialRampToValueAtTime(to, t + dur);
+  out(s, o.connect(filter(s, 'lowpass', 5000)).connect(env(s, t, v, dur, 0.002)), s.sfx, 0.15, pan);
+}
+
+export function thud(s, t, v) {
+  const o = osc(s, 'sine', 140, t, t + 0.25);
+  o.frequency.exponentialRampToValueAtTime(50, t + 0.18);
+  out(s, o.connect(env(s, t, v, 0.2)), s.drums);
+  out(
+    s,
+    noise(s, t, t + 0.08)
+      .connect(filter(s, 'lowpass', 900))
+      .connect(env(s, t, v * 0.5, 0.06)),
+    s.drums,
+  );
+}
+
+export function meow(s, t, v) {
+  const o = osc(s, 'square', 700, t, t + 0.5);
+  o.frequency.setValueCurveAtTime(Float32Array.from([700, 1150, 1300, 1200, 950, 760]), t, 0.42);
+  const f = filter(s, 'lowpass', 2600, 2);
+  const g = s.ctx.createGain();
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(v, t + 0.03);
+  g.gain.setValueAtTime(v, t + 0.3);
+  g.gain.linearRampToValueAtTime(0, t + 0.44);
+  out(s, o.connect(f).connect(g), s.sfx, 0.25);
+}
